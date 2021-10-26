@@ -1,0 +1,26 @@
+{
+    "name": "sandritsch91/jquery-gantt",
+    "description": "jQuery Plugin for simple Gantt-Charts",
+    "keywords": [
+        "plugin",
+        "javascript",
+        "jQuery",
+        "Gantt"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/Sandritsch91/jQuery.Gantt/issues",
+        "source": "https://github.com/Sandritsch91/jQuery.Gantt"
+    },
+    "authors": [
+        {
+            "name": "Sandro Venetz",
+            "email": "sandritsch91@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+
+    }
+}
