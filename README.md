@@ -1,11 +1,7 @@
-![npm](https://img.shields.io/npm/v/@taitems/jquery-gantt)
-## [Demo and Documentation](http://taitems.github.com/jQuery.Gantt/)
-
 ## Installation
 
 - Git clone
-- `yarn add @taitems/jquery-gantt`, or
-- `npm install @taitems/jquery-gantt` 
+- Composer
 
 ## About
 
