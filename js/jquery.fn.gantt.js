@@ -198,6 +198,7 @@
             clearPosition: false,
             // scale parameters
             scale: "days",
+            subScale: 12,
             maxScale: "months",
             minScale: "hours",
             // various
@@ -319,7 +320,6 @@
 
                 element.scrollNavigation.canScroll = ($dataPanel.width() > $rightPanel.width());
 
-                core.markNow(element);
                 core.fillData(element, $dataPanel);
 
                 // Get current position in the view from localStorage
@@ -529,15 +529,15 @@
                             var getDay = day.getDay();
                             if (rgetDay !== getDay) {
                                 dayClass = (today - day === 0) ?
-                                    "today" : tools.isHoliday(day.getTime()) ?
-                                        "holiday" : dowClass[getDay];
+                                    " today" : tools.isHoliday(day.getTime()) ?
+                                        " holiday" : '';
 
                                 dayArr.push(
-                                    '<div class="row date ' + dayClass + '" ' +
+                                    '<div class="row date ' + dowClass[getDay] + dayClass + '" ' +
                                     'style="width: ' + tools.getCellSize() * hoursInDay + 'px;">' +
                                     '<div class="fn-label">' + day.getDate() + '</div></div>');
                                 dowArr.push(
-                                    '<div class="row day ' + dayClass + '" ' +
+                                    '<div class="row day ' + dowClass[getDay] + ' ' + dayClass + '" ' +
                                     'style="width: ' + tools.getCellSize() * hoursInDay + 'px;">' +
                                     '<div class="fn-label">' + settings.dow[getDay] + '</div></div>');
 
@@ -1028,26 +1028,6 @@
                 return bar;
             },
 
-            // Remove the `wd` (weekday) class and add `today` class to the
-            // current day/week/month (depending on the current scale)
-            markNow: function (element) {
-                var cd = new Date().setHours(0, 0, 0, 0);
-                switch (settings.scale) {
-                    case "weeks":
-                        $(element).find(':findweek("' + cd + '")').removeClass('wd').addClass('today');
-                        break;
-                    case "months":
-                        $(element).find(':findmonth("' + cd + '")').removeClass('wd').addClass('today');
-                        break;
-                    case "days":
-                    /* falls through */
-                    case "hours":
-                    /* falls through */
-                    default:
-                        $(element).find(':findday("' + cd + '")').removeClass('wd').addClass('today');
-                }
-            },
-
             // **Fill the Chart**
             // Parse the data and fill the data panel
             fillData: function (element, datapanel) {
@@ -1328,6 +1308,7 @@
 
                     element.scaleStep = scaleSt;
                     settings.scale = scale;
+                    settings.subScale = scaleSt;
                     element.headerRows = headerRows;
                     var $rightPanel = $(element).find(".fn-gantt .rightPanel");
                     var $dataPanel = $rightPanel.find(".dataPanel");
@@ -1336,6 +1317,7 @@
 
                     if (settings.useStorage) {
                         window.localStorage.setItem(settings.storageKey + "CurrentScale", settings.scale);
+                        window.localStorage.setItem(settings.storageKey + "CurrentSubScale", settings.subScale);
                         // reset scrollPos
                         window.localStorage.setItem(settings.storageKey + "ScrollPos", null);
                     }
@@ -1849,21 +1831,23 @@
             // Update localStorage with current scale
             if (settings.useStorage) {
                 var sc = window.localStorage.getItem(settings.storageKey + "CurrentScale");
+                var ss = window.localStorage.getItem(settings.storageKey + "CurrentSubScale")
                 if (sc) {
                     settings.scale = sc;
                 } else {
                     window.localStorage.setItem(settings.storageKey + "CurrentScale", settings.scale);
                 }
+                if (ss) {
+                    settings.subScale = ss;
+                } else {
+                    window.localStorage.setItem(settings.storageKey + "CurrentSubScale", settings.subScale);
+                }
             }
 
             switch (settings.scale) {
-                //case "hours":
-                //    this.headerRows = 5;
-                //    this.scaleStep = 8;
-                //    break;
                 case "hours":
                     this.headerRows = 5;
-                    this.scaleStep = 12;
+                    this.scaleStep = settings.subScale;
                     break;
                 case "weeks":
                     this.headerRows = 3;
