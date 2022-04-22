@@ -36,8 +36,12 @@
     height: 24px;
     line-height: 24px;
     margin: 0;
+    padding: 0;
 }
 
+.fn-gantt .row > .fn-label {
+    padding: 0;
+}
 
 /* === LEFT PANEL === */
 
@@ -127,7 +131,6 @@
     font-size: 11px;
     color: #484a4d;
     text-shadow: 0 1px 0 rgba(255,255,255,0.75);
-    text-align: center;
 }
 
 .fn-gantt .sa, .fn-gantt .sn, .fn-gantt .wd {
