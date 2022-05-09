@@ -1225,7 +1225,7 @@
                         let arr = val.split('.');
                         let date = new Date(arr[2], arr[1] - 1, arr[0]);
                         let elem = $('[data-repdate="' + date.getTime() + '"]');
-                        if (elem) {
+                        if (elem.length > 0) {
                             maxLeft = (dataPanelWidth - rightPanelWidth) * -1;
                             val = elem.offset().left - $dataPanel.offset().left;
                             val *= -1;
