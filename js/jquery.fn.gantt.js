@@ -190,7 +190,7 @@
             // navigation
             navigate: "buttons",
             scrollToToday: true,
-            ctrlKeyToScroll: false,
+            shiftKeyToScroll: true,
             scrollDistance: -50,
             // storage options
             useStorage: false,
@@ -409,7 +409,7 @@
 
                 function onMouseWheel(e) {
                     // Check if ctrlKey is needed to scroll
-                    if (settings.ctrlKeyToScroll && !e.ctrlKey) {
+                    if (settings.shiftKeyToScroll && !e.shiftKey) {
                         return;
                     }
                     core.wheelScroll(element, e);
