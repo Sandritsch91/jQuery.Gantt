@@ -204,10 +204,10 @@
             // various
             hideTooltip: false,
             // callbacks
-            onItemClick: function (data) {
+            onItemClick: function (data, event) {
                 return;
             },
-            onAddClick: function (dt, rowId) {
+            onAddClick: function (dt, rowId, event) {
                 return;
             },
             onRender: $.noop
@@ -444,7 +444,7 @@
 
                     // Dispatch user registered function with the DateTime in ms
                     // and the id if the clicked object is a row
-                    settings.onAddClick(dt, rowId);
+                    settings.onAddClick(dt, rowId, e);
                 });
                 return dataPanel;
             },
@@ -1023,7 +1023,7 @@
                 }
                 bar.click(function (e) {
                     e.stopPropagation();
-                    settings.onItemClick($(this).data("dataObj"));
+                    settings.onItemClick($(this).data("dataObj"), e);
                 });
                 return bar;
             },
