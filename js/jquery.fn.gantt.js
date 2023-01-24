@@ -325,7 +325,7 @@
                 // Get current position in the view from localStorage
                 if (settings.useStorage) {
                     var sc = window.localStorage.getItem(settings.storageKey + "ScrollPos");
-                    if (sc) {
+                    if (sc && sc * -1 <= $dataPanel.width()) {
                         element.hPosition = sc;
                     }
                 }
@@ -343,6 +343,7 @@
                             element.hPosition = hPos > 0 ? 0 : hPos;
                             element.scaleOldWidth = null;
                         }
+                        console.log(element.hPosition, $dataPanel.width())
                         $dataPanel.css({"left": element.hPosition + 'px'});
                         element.scrollNavigation.panelMargin = element.hPosition;
                     }
@@ -1796,6 +1797,10 @@
         this.recalculatePanelMaxPos = function () {
             let dataPanel = $(".gantt .dataPanel");
             let rightPanel = $(".gantt .rightPanel");
+            
+            if (dataPanel.length === 0) {
+                return;
+            }
 
             let max = dataPanel.width() - rightPanel.width();
             this.prop('scrollNavigation')['panelMaxPos'] = max;
