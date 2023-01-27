@@ -294,8 +294,64 @@
 
                 /* core.render(element); */
                 core.waitToggle(element, function () {
+                    core.initEvents(element);
                     core.render(element);
                 });
+            },
+
+            // init all event-listeners globally, to save time
+            initEvents: function(element) {
+                // Handle click events and dispatch to registered `onAddClick` function
+                $(document).on('click', '.dataPanel', function (e) {
+                    e.stopPropagation();
+
+                    var leftpanel = $(element).find(".fn-gantt .leftPanel");
+                    var datapanel = $(element).find(".fn-gantt .dataPanel");
+
+                    var col;
+                    datapanel.find('.header > [data-repdate]').each(function () {
+                        var $this = $(this);
+                        if ($this.offset().left + $this.width() > e.pageX && $this.offset().left < e.pageX) {
+                            col = $this;
+                            return false;
+                        }
+                    });
+
+                    var dt = col.data("repdate");
+                    // Find row where click occurred
+                    var row = core.elementFromPoint(leftpanel.offset().left + leftpanel.width() - 10, e.pageY);
+                    // Was the label clicked directly?
+                    if (row.className.indexOf("fn-label") === 0) {
+                        row = $(row.parentNode);
+                    } else {
+                        row = $(row);
+                    }
+                    var rowId = row.data('id');
+
+                    // Dispatch user registered function with the DateTime in ms
+                    // and the id if the clicked object is a row
+                    settings.onAddClick(dt, rowId, e);
+                });
+
+                // init tooltip
+                if (!settings.hideTooltip) {
+                    $(document).on('mouseenter', '.dataPanel .bar', function(e) {
+                        var desc = $(this).attr('desc');
+                        if (!desc) {
+                            return;
+                        }
+                        var hint = $('<div class="fn-gantt-hint" />').html(desc);
+                        $("body").append(hint);
+                        hint.css("left", e.pageX);
+                        hint.css("top", e.pageY);
+                        hint.show();
+                    }).on('mouseleave', '.dataPanel .bar', function(e) {
+                        $(".fn-gantt-hint").remove();
+                    }).on('mousemove', '.dataPanel .bar', function(e) {
+                        $(".fn-gantt-hint").css("left", e.pageX);
+                        $(".fn-gantt-hint").css("top", e.pageY + 15);
+                    });
+                }
             },
 
             // **Render the grid**
@@ -320,7 +376,7 @@
 
                 element.scrollNavigation.canScroll = ($dataPanel.width() > $rightPanel.width());
 
-                core.fillData(element, $dataPanel);
+                core.fillData(element, $dataPanel[0]);
 
                 // Get current position in the view from localStorage
                 if (settings.useStorage) {
@@ -343,7 +399,6 @@
                             element.hPosition = hPos > 0 ? 0 : hPos;
                             element.scaleOldWidth = null;
                         }
-                        console.log(element.hPosition, $dataPanel.width())
                         $dataPanel.css({"left": element.hPosition + 'px'});
                         element.scrollNavigation.panelMargin = element.hPosition;
                     }
@@ -416,37 +471,6 @@
                     core.wheelScroll(element, e);
                 }
 
-                // Handle click events and dispatch to registered `onAddClick` function
-                dataPanel.click(function (e) {
-                    e.stopPropagation();
-
-                    var leftpanel = $(element).find(".fn-gantt .leftPanel");
-                    var datapanel = $(element).find(".fn-gantt .dataPanel");
-
-                    var col;
-                    datapanel.find('.header > [data-repdate]').each(function () {
-                        var $this = $(this);
-                        if ($this.offset().left + $this.width() > e.pageX && $this.offset().left < e.pageX) {
-                            col = $this;
-                            return false;
-                        }
-                    });
-
-                    var dt = col.data("repdate");
-                    // Find row where click occurred
-                    var row = core.elementFromPoint(leftpanel.offset().left + leftpanel.width() - 10, e.pageY);
-                    // Was the label clicked directly?
-                    if (row.className.indexOf("fn-label") === 0) {
-                        row = $(row.parentNode);
-                    } else {
-                        row = $(row);
-                    }
-                    var rowId = row.data('id');
-
-                    // Dispatch user registered function with the DateTime in ms
-                    // and the id if the clicked object is a row
-                    settings.onAddClick(dt, rowId, e);
-                });
                 return dataPanel;
             },
 
@@ -997,35 +1021,20 @@
             // Return an element representing a progress of position within the entire chart
             createProgressBar: function (label, desc, classNames, dataObj) {
                 label = label || "";
-                var bar = $('<div class="bar"><div class="fn-label">' + label + '</div></div>')
-                    .attr('id', core.createBarId(dataObj))
-                    .data("dataObj", dataObj)
-                    .data("label", label)
-                    .data("desc", desc);
-                if (!settings.hideTooltip && desc) {
-                    bar
-                        .mouseenter(function (e) {
-                            var hint = $('<div class="fn-gantt-hint" />').html(desc);
-                            $("body").append(hint);
-                            hint.css("left", e.pageX);
-                            hint.css("top", e.pageY);
-                            hint.show();
-                        })
-                        .mouseleave(function () {
-                            $(".fn-gantt-hint").remove();
-                        })
-                        .mousemove(function (e) {
-                            $(".fn-gantt-hint").css("left", e.pageX);
-                            $(".fn-gantt-hint").css("top", e.pageY + 15);
-                        });
+
+                var bar = document.createElement('div');
+                bar.innerHTML = label;
+                bar.classList.add('bar');
+                bar.setAttribute('id', core.createBarId(dataObj));
+                bar.setAttribute('label', label);
+                bar.setAttribute('desc', desc);
+                bar.setAttribute('data', JSON.stringify(dataObj));
+
+                classNames =classNames.split(' ');
+                for (let i = 0; i < classNames.length; i++) {
+                    bar.classList.add(classNames[i]);
                 }
-                if (classNames) {
-                    bar.addClass(classNames);
-                }
-                bar.click(function (e) {
-                    e.stopPropagation();
-                    settings.onItemClick($(this).data("dataObj"), e);
-                });
+
                 return bar;
             },
 
@@ -1034,7 +1043,7 @@
             fillData: function (element, datapanel) {
                 var cellWidth = tools.getCellSize();
                 var barOffset = (cellWidth - 18) / 2;
-                var dataPanelWidth = datapanel.width();
+                var dataPanelWidth = $(datapanel).width();
                 var invertColor = function (colStr) {
                     try {
                         colStr = colStr.replace("rgb(", "").replace(")", "");
@@ -1049,16 +1058,22 @@
                     }
                 };
                 // Loop through the values of each data element and set a row
+                let html = '';
                 for (let i = 0; i < element.data.length; i++) {
                     let entry = element.data[i];
                     let itemsPerPage = settings.itemsPerPage;
                     let pageNum = element.pageNum;
+                    var topEl = document.getElementById("rowheader" + i);
+
                     if (i >= pageNum * itemsPerPage && i < (pageNum * itemsPerPage + itemsPerPage)) {
                         for (let j = 0; j < entry.values.length; j++) {
                             let day = entry.values[j];
                             var _bar;
                             var from, to, cFrom, cTo, dFrom, dTo, dl, dp;
-                            var topEl, top;
+                            var top;
+
+                            _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
+                            
                             switch (settings.scale) {
                                 // **Hourly data**
                                 case "hours":
@@ -1071,19 +1086,8 @@
                                     dl = Math.floor((cTo - cFrom) / cellWidth) + 1;
                                     dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                    _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
-
                                     // find row
-                                    topEl = document.getElementById("rowheader" + i);
                                     top = cellWidth * 5 + barOffset + parseInt(topEl.dataset.offset);
-
-                                    _bar.css({
-                                        top: top,
-                                        left: Math.floor(cFrom),
-                                        width: dp + '%'
-                                    });
-
-                                    datapanel.append(_bar);
                                     break;
 
                                 // **Weekly data**
@@ -1098,18 +1102,8 @@
                                     dl = Math.round((cTo - cFrom) / cellWidth) + 1;
                                     dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                    _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
-
                                     // find row
-                                    topEl = $(element).find("#rowheader" + i);
-                                    top = cellWidth * 3 + barOffset + topEl.data("offset");
-                                    _bar.css({
-                                        top: top,
-                                        left: Math.floor(cFrom),
-                                        width: dp + '%'
-                                    });
-
-                                    datapanel.append(_bar);
+                                    top = cellWidth * 3 + barOffset + parseInt(topEl.dataset.offset);
                                     break;
 
                                 // **Monthly data**
@@ -1136,18 +1130,8 @@
                                     dl = Math.round((cTo - cFrom) / cellWidth) + 1;
                                     dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                    _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
-
                                     // find row
-                                    topEl = $(element).find("#rowheader" + i);
-                                    top = cellWidth * 2 + barOffset + topEl.data("offset");
-                                    _bar.css({
-                                        top: top,
-                                        left: Math.floor(cFrom),
-                                        width: dp + '%'
-                                    });
-
-                                    datapanel.append(_bar);
+                                    top = cellWidth * 2 + barOffset + parseInt(topEl.dataset.offset);
                                     break;
 
                                 // **Days**
@@ -1161,29 +1145,27 @@
                                     dl = Math.round((dTo - dFrom) / UTC_DAY_IN_MS) + 1;
                                     dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                    _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
-
                                     // find row
-                                    topEl = $(element).find("#rowheader" + i);
-                                    top = cellWidth * 4 + barOffset + topEl.data("offset");
-                                    _bar.css({
-                                        top: top,
-                                        left: Math.floor(cFrom),
-                                        width: dp + '%'
-                                    });
-
-                                    datapanel.append(_bar);
+                                    top = cellWidth * 4 + barOffset + parseInt(topEl.dataset.offset);
                             }
 
-                            var $l = _bar.find(".fn-label");
-                            if ($l.length) {
-                                var gray = invertColor(_bar.css('backgroundColor'));
-                                $l.css("color", gray);
-                            }
+                            _bar.style.top = top + 'px';
+                            _bar.style.left = Math.floor(cFrom) + 'px';
+                            _bar.style.width = dp + '%';
+
+                            html += _bar.outerHTML;
                         }
-
                     }
                 }
+
+                datapanel.innerHTML = datapanel.innerHTML + html;
+
+                // Handle click on Item
+                $('.dataPanel .bar').on('click', function (e) {
+                    e.stopPropagation();
+                    let dataObj = JSON.parse($(this).attr('data'));
+                    settings.onItemClick(dataObj, e);
+                });
             },
             // **Navigation**
             navigateTo: function (element, val) {
@@ -1470,7 +1452,7 @@
                             '<div class="fn-gantt-loader-spinner"><span>' + settings.waitText + '</span></div></div>');
                     }
                     $elt.append(element.loader);
-                    setTimeout(showCallback, 500);
+                    setTimeout(showCallback, 1);
 
                 } else if (element.loader) {
                     element.loader.detach();
@@ -1797,7 +1779,7 @@
         this.recalculatePanelMaxPos = function () {
             let dataPanel = $(".gantt .dataPanel");
             let rightPanel = $(".gantt .rightPanel");
-            
+
             if (dataPanel.length === 0) {
                 return;
             }

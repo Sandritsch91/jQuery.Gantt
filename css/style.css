@@ -19,9 +19,9 @@
 .fn-gantt *,
 .fn-gantt *:after,
 .fn-gantt *:before {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .fn-gantt .fn-content {
@@ -67,6 +67,7 @@
 .fn-gantt .leftPanel .row {
     border-bottom: 1px solid #DDD;
 }
+
 .fn-gantt .leftPanel .name, .fn-gantt .leftPanel .desc {
     float: left;
     height: 24px;
@@ -94,8 +95,6 @@
     background-color: #f6f6f6;
     width: 100%;
 }
-
-
 
 
 /* === RIGHT PANEL === */
@@ -130,7 +129,7 @@
     border-bottom: 1px solid #DDD;
     font-size: 11px;
     color: #484a4d;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 
 .fn-gantt .sa, .fn-gantt .sn, .fn-gantt .wd {
@@ -171,7 +170,7 @@
     font-weight: bold;
     font-size: 11px;
     color: #484a4d;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
     text-align: center;
 }
 
@@ -182,9 +181,9 @@
     position: absolute;
     display: none;
     z-index: 11;
--webkit-border-radius: 4px;
-   -moz-border-radius: 4px;
-        border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 
 .fn-gantt .bar {
@@ -194,46 +193,45 @@
     position: absolute;
     z-index: 10;
     text-align: center;
--webkit-box-shadow: 0 0 1px rgba(0,0,0,0.25) inset;
-   -moz-box-shadow: 0 0 1px rgba(0,0,0,0.25) inset;
-        box-shadow: 0 0 1px rgba(0,0,0,0.25) inset;
--webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-        border-radius: 3px;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.25) inset;
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25) inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     border: 1px solid #CCC;
-}
 
-.fn-gantt .bar .fn-label {
     line-height: 17px;
     font-weight: bold;
     white-space: nowrap;
-    width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
     color: #414B57;
-    text-align: center;
     font-size: 9px;
 }
 
 .fn-gantt .ganttRed {
     background-color: #F9C4E1;
 }
-.fn-gantt .ganttRed .fn-label {
+
+.fn-gantt .ganttRed {
     color: #78436D !important;
 }
 
 .fn-gantt .ganttGreen {
     background-color: #D8EDA3;
 }
-.fn-gantt .ganttGreen .fn-label {
+
+.fn-gantt .ganttGreen {
     color: #778461 !important;
 }
 
 .fn-gantt .ganttOrange {
     background-color: #FCD29A;
 }
-.fn-gantt .ganttOrange .fn-label {
+
+.fn-gantt .ganttOrange {
     color: #714715 !important;
 }
 
@@ -245,6 +243,7 @@
     background-color: #f6f6f6;
     width: 100%;
 }
+
 .fn-gantt .navigate {
     border-top: 1px solid #DDD;
     padding: 10px 0 10px 225px;
@@ -287,12 +286,12 @@
     height: 6px;
     background-color: #838688;
     margin: 8px 0 0 0;
--webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6) inset;
-   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6) inset;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.6) inset;
--webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-        border-radius: 3px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .fn-gantt .navigate .nav-slider-button {
@@ -347,28 +346,29 @@
     border: 1px solid #454546;
     cursor: pointer;
     vertical-align: top;
--webkit-border-radius: 2px;
-   -moz-border-radius: 2px;
-        border-radius: 2px;
--webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 1px 1px rgba(0,0,0,0.2);
-   -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 1px 1px rgba(0,0,0,0.2);
-        box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 1px 1px rgba(0,0,0,0.2);
--webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-        box-sizing: border-box;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 .fn-gantt .nav-link:active {
--webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.25) inset, 0 1px 0 #FFF;
-   -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.25) inset, 0 1px 0 #FFF;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.25) inset, 0 1px 0 #FFF;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset, 0 1px 0 #FFF;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset, 0 1px 0 #FFF;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset, 0 1px 0 #FFF;
 }
 
 .fn-gantt .navigate .nav-page-back {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22arrow-up%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-up%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M6.101%20261.899L25.9%20281.698c4.686%204.686%2012.284%204.686%2016.971%200L198%20126.568V468c0%206.627%205.373%2012%2012%2012h28c6.627%200%2012-5.373%2012-12V126.568l155.13%20155.13c4.686%204.686%2012.284%204.686%2016.971%200l19.799-19.799c4.686-4.686%204.686-12.284%200-16.971L232.485%2035.515c-4.686-4.686-12.284-4.686-16.971%200L6.101%20244.929c-4.687%204.686-4.687%2012.284%200%2016.97z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22arrow-up%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-up%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M6.101%20261.899L25.9%20281.698c4.686%204.686%2012.284%204.686%2016.971%200L198%20126.568V468c0%206.627%205.373%2012%2012%2012h28c6.627%200%2012-5.373%2012-12V126.568l155.13%20155.13c4.686%204.686%2012.284%204.686%2016.971%200l19.799-19.799c4.686-4.686%204.686-12.284%200-16.971L232.485%2035.515c-4.686-4.686-12.284-4.686-16.971%200L6.101%20244.929c-4.687%204.686-4.687%2012.284%200%2016.97z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-page-next {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22arrow-down%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-down%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M441.9%20250.1l-19.8-19.8c-4.7-4.7-12.3-4.7-17%200L250%20385.4V44c0-6.6-5.4-12-12-12h-28c-6.6%200-12%205.4-12%2012v341.4L42.9%20230.3c-4.7-4.7-12.3-4.7-17%200L6.1%20250.1c-4.7%204.7-4.7%2012.3%200%2017l209.4%20209.4c4.7%204.7%2012.3%204.7%2017%200l209.4-209.4c4.7-4.7%204.7-12.3%200-17z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22arrow-down%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-down%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M441.9%20250.1l-19.8-19.8c-4.7-4.7-12.3-4.7-17%200L250%20385.4V44c0-6.6-5.4-12-12-12h-28c-6.6%200-12%205.4-12%2012v341.4L42.9%20230.3c-4.7-4.7-12.3-4.7-17%200L6.1%20250.1c-4.7%204.7-4.7%2012.3%200%2017l209.4%20209.4c4.7%204.7%2012.3%204.7%2017%200l209.4-209.4c4.7-4.7%204.7-12.3%200-17z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-slider .nav-page-next {
@@ -376,42 +376,42 @@
 }
 
 .fn-gantt .navigate .nav-begin {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fal%22%20data-icon%3D%22arrow-to-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-to-left%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M216%20412.5l-148.5-148c-4.7-4.7-4.7-12.3%200-17L216%2099.5c4.7-4.7%2012.3-4.7%2017%200l7.1%207.1c4.7%204.7%204.7%2012.3%200%2017L124.1%20239H436c6.6%200%2012%205.4%2012%2012v10c0%206.6-5.4%2012-12%2012H124.1L240%20388.4c4.7%204.7%204.7%2012.3%200%2017l-7.1%207.1c-4.6%204.7-12.2%204.7-16.9%200zM12%20448h8c6.6%200%2012-5.4%2012-12V76c0-6.6-5.4-12-12-12h-8C5.4%2064%200%2069.4%200%2076v360c0%206.6%205.4%2012%2012%2012z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fal%22%20data-icon%3D%22arrow-to-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-to-left%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M216%20412.5l-148.5-148c-4.7-4.7-4.7-12.3%200-17L216%2099.5c4.7-4.7%2012.3-4.7%2017%200l7.1%207.1c4.7%204.7%204.7%2012.3%200%2017L124.1%20239H436c6.6%200%2012%205.4%2012%2012v10c0%206.6-5.4%2012-12%2012H124.1L240%20388.4c4.7%204.7%204.7%2012.3%200%2017l-7.1%207.1c-4.6%204.7-12.2%204.7-16.9%200zM12%20448h8c6.6%200%2012-5.4%2012-12V76c0-6.6-5.4-12-12-12h-8C5.4%2064%200%2069.4%200%2076v360c0%206.6%205.4%2012%2012%2012z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-prev-week {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-double-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-double-left%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M390.3%20473.9L180.9%20264.5c-4.7-4.7-4.7-12.3%200-17L390.3%2038.1c4.7-4.7%2012.3-4.7%2017%200l19.8%2019.8c4.7%204.7%204.7%2012.3%200%2017L246.4%20256l180.7%20181.1c4.7%204.7%204.7%2012.3%200%2017l-19.8%2019.8c-4.7%204.7-12.3%204.7-17%200zm-143%200l19.8-19.8c4.7-4.7%204.7-12.3%200-17L86.4%20256%20267.1%2074.9c4.7-4.7%204.7-12.3%200-17l-19.8-19.8c-4.7-4.7-12.3-4.7-17%200L20.9%20247.5c-4.7%204.7-4.7%2012.3%200%2017l209.4%20209.4c4.7%204.7%2012.3%204.7%2017%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-double-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-double-left%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M390.3%20473.9L180.9%20264.5c-4.7-4.7-4.7-12.3%200-17L390.3%2038.1c4.7-4.7%2012.3-4.7%2017%200l19.8%2019.8c4.7%204.7%204.7%2012.3%200%2017L246.4%20256l180.7%20181.1c4.7%204.7%204.7%2012.3%200%2017l-19.8%2019.8c-4.7%204.7-12.3%204.7-17%200zm-143%200l19.8-19.8c4.7-4.7%204.7-12.3%200-17L86.4%20256%20267.1%2074.9c4.7-4.7%204.7-12.3%200-17l-19.8-19.8c-4.7-4.7-12.3-4.7-17%200L20.9%20247.5c-4.7%204.7-4.7%2012.3%200%2017l209.4%20209.4c4.7%204.7%2012.3%204.7%2017%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-prev-day {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-left%20fa-fw%20fa-w-8%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M231.293%20473.899l19.799-19.799c4.686-4.686%204.686-12.284%200-16.971L70.393%20256%20251.092%2074.87c4.686-4.686%204.686-12.284%200-16.971L231.293%2038.1c-4.686-4.686-12.284-4.686-16.971%200L4.908%20247.515c-4.686%204.686-4.686%2012.284%200%2016.971L214.322%20473.9c4.687%204.686%2012.285%204.686%2016.971-.001z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-left%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-left%20fa-fw%20fa-w-8%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M231.293%20473.899l19.799-19.799c4.686-4.686%204.686-12.284%200-16.971L70.393%20256%20251.092%2074.87c4.686-4.686%204.686-12.284%200-16.971L231.293%2038.1c-4.686-4.686-12.284-4.686-16.971%200L4.908%20247.515c-4.686%204.686-4.686%2012.284%200%2016.971L214.322%20473.9c4.687%204.686%2012.285%204.686%2016.971-.001z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
     background-size: 0.4rem;
 }
 
 .fn-gantt .navigate .nav-next-day {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-right%20fa-w-8%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M24.707%2038.101L4.908%2057.899c-4.686%204.686-4.686%2012.284%200%2016.971L185.607%20256%204.908%20437.13c-4.686%204.686-4.686%2012.284%200%2016.971L24.707%20473.9c4.686%204.686%2012.284%204.686%2016.971%200l209.414-209.414c4.686-4.686%204.686-12.284%200-16.971L41.678%2038.101c-4.687-4.687-12.285-4.687-16.971%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-right%20fa-w-8%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M24.707%2038.101L4.908%2057.899c-4.686%204.686-4.686%2012.284%200%2016.971L185.607%20256%204.908%20437.13c-4.686%204.686-4.686%2012.284%200%2016.971L24.707%20473.9c4.686%204.686%2012.284%204.686%2016.971%200l209.414-209.414c4.686-4.686%204.686-12.284%200-16.971L41.678%2038.101c-4.687-4.687-12.285-4.687-16.971%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
     background-size: 0.4rem;
 }
 
 .fn-gantt .navigate .nav-next-week {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-double-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-double-right%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M57.7%2038.1l209.4%20209.4c4.7%204.7%204.7%2012.3%200%2017L57.7%20473.9c-4.7%204.7-12.3%204.7-17%200l-19.8-19.8c-4.7-4.7-4.7-12.3%200-17L201.6%20256%2020.9%2074.9c-4.7-4.7-4.7-12.3%200-17l19.8-19.8c4.7-4.7%2012.3-4.7%2017%200zm143%200l-19.8%2019.8c-4.7%204.7-4.7%2012.3%200%2017L361.6%20256%20180.9%20437.1c-4.7%204.7-4.7%2012.3%200%2017l19.8%2019.8c4.7%204.7%2012.3%204.7%2017%200l209.4-209.4c4.7-4.7%204.7-12.3%200-17L217.7%2038.1c-4.7-4.7-12.3-4.7-17%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22chevron-double-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-chevron-double-right%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M57.7%2038.1l209.4%20209.4c4.7%204.7%204.7%2012.3%200%2017L57.7%20473.9c-4.7%204.7-12.3%204.7-17%200l-19.8-19.8c-4.7-4.7-4.7-12.3%200-17L201.6%20256%2020.9%2074.9c-4.7-4.7-4.7-12.3%200-17l19.8-19.8c4.7-4.7%2012.3-4.7%2017%200zm143%200l-19.8%2019.8c-4.7%204.7-4.7%2012.3%200%2017L361.6%20256%20180.9%20437.1c-4.7%204.7-4.7%2012.3%200%2017l19.8%2019.8c4.7%204.7%2012.3%204.7%2017%200l209.4-209.4c4.7-4.7%204.7-12.3%200-17L217.7%2038.1c-4.7-4.7-12.3-4.7-17%200z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-end {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fal%22%20data-icon%3D%22arrow-to-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-to-right%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M215%2099.5l-7.1%207.1c-4.7%204.7-4.7%2012.3%200%2017l116%20115.4H12c-6.6%200-12%205.4-12%2012v10c0%206.6%205.4%2012%2012%2012h311.9L208%20388.4c-4.7%204.7-4.7%2012.3%200%2017l7.1%207.1c4.7%204.7%2012.3%204.7%2017%200l148.5-148c4.7-4.7%204.7-12.3%200-17L232%2099.5c-4.7-4.7-12.3-4.7-17%200zM448%2076v360c0%206.6-5.4%2012-12%2012h-8c-6.6%200-12-5.4-12-12V76c0-6.6%205.4-12%2012-12h8c6.6%200%2012%205.4%2012%2012z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fal%22%20data-icon%3D%22arrow-to-right%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%20class%3D%22svg-inline--fa%20fa-arrow-to-right%20fa-w-14%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M215%2099.5l-7.1%207.1c-4.7%204.7-4.7%2012.3%200%2017l116%20115.4H12c-6.6%200-12%205.4-12%2012v10c0%206.6%205.4%2012%2012%2012h311.9L208%20388.4c-4.7%204.7-4.7%2012.3%200%2017l7.1%207.1c4.7%204.7%2012.3%204.7%2017%200l148.5-148c4.7-4.7%204.7-12.3%200-17L232%2099.5c-4.7-4.7-12.3-4.7-17%200zM448%2076v360c0%206.6-5.4%2012-12%2012h-8c-6.6%200-12-5.4-12-12V76c0-6.6%205.4-12%2012-12h8c6.6%200%2012%205.4%2012%2012z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-zoomOut {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22minus%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%20class%3D%22svg-inline--fa%20fa-minus%20fa-w-12%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M368%20224H16c-8.84%200-16%207.16-16%2016v32c0%208.84%207.16%2016%2016%2016h352c8.84%200%2016-7.16%2016-16v-32c0-8.84-7.16-16-16-16z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22minus%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%20class%3D%22svg-inline--fa%20fa-minus%20fa-w-12%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M368%20224H16c-8.84%200-16%207.16-16%2016v32c0%208.84%207.16%2016%2016%2016h352c8.84%200%2016-7.16%2016-16v-32c0-8.84-7.16-16-16-16z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-zoomIn {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22plus%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%20class%3D%22svg-inline--fa%20fa-plus%20fa-w-12%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M368%20224H224V80c0-8.84-7.16-16-16-16h-32c-8.84%200-16%207.16-16%2016v144H16c-8.84%200-16%207.16-16%2016v32c0%208.84%207.16%2016%2016%2016h144v144c0%208.84%207.16%2016%2016%2016h32c8.84%200%2016-7.16%2016-16V288h144c8.84%200%2016-7.16%2016-16v-32c0-8.84-7.16-16-16-16z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22plus%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%20class%3D%22svg-inline--fa%20fa-plus%20fa-w-12%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M368%20224H224V80c0-8.84-7.16-16-16-16h-32c-8.84%200-16%207.16-16%2016v144H16c-8.84%200-16%207.16-16%2016v32c0%208.84%207.16%2016%2016%2016h144v144c0%208.84%207.16%2016%2016%2016h32c8.84%200%2016-7.16%2016-16V288h144c8.84%200%2016-7.16%2016-16v-32c0-8.84-7.16-16-16-16z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
     margin-left: 15px;
 }
 
 .fn-gantt .navigate .nav-now {
-    background-image:url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22clock%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20class%3D%22svg-inline--fa%20fa-clock%20fa-w-16%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M256%208C119%208%208%20119%208%20256s111%20248%20248%20248%20248-111%20248-248S393%208%20256%208zm0%20448c-110.5%200-200-89.5-200-200S145.5%2056%20256%2056s200%2089.5%20200%20200-89.5%20200-200%20200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6%205.4-12%2012-12h32c6.6%200%2012%205.4%2012%2012v141.7l66.8%2048.6c5.4%203.9%206.5%2011.4%202.6%2016.8L334.6%20349c-3.9%205.3-11.4%206.5-16.8%202.6z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")!important;
+    background-image: url("data:image/svg+xml,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22far%22%20data-icon%3D%22clock%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20class%3D%22svg-inline--fa%20fa-clock%20fa-w-16%20fa-2x%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M256%208C119%208%208%20119%208%20256s111%20248%20248%20248%20248-111%20248-248S393%208%20256%208zm0%20448c-110.5%200-200-89.5-200-200S145.5%2056%20256%2056s200%2089.5%20200%20200-89.5%20200-200%20200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6%205.4-12%2012-12h32c6.6%200%2012%205.4%2012%2012v141.7l66.8%2048.6c5.4%203.9%206.5%2011.4%202.6%2016.8L334.6%20349c-3.9%205.3-11.4%206.5-16.8%202.6z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") !important;
 }
 
 .fn-gantt .navigate .nav-slider .nav-now {
@@ -424,11 +424,12 @@
     height: 100%;
     left: 0;
     top: 0;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#bf000000',GradientType=0 );
-    background: rgba(0,0,0,0.75);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf000000', endColorstr='#bf000000', GradientType=0);
+    background: rgba(0, 0, 0, 0.75);
     cursor: wait;
     z-index: 30;
 }
+
 .fn-gantt-loader-spinner span {
     position: absolute;
     margin: auto;
