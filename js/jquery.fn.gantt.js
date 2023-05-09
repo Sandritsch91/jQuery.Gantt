@@ -846,33 +846,36 @@
                 var ganttNavigate = null;
                 // Scrolling navigation is provided by setting
                 // `settings.navigate='scroll'`
+
+                var btnPageBack = $('<button type="button" class="btn btn-primary btn-xs nav-page-back"/>')
+                    .html('&nbsp;')
+                    .click(function () {
+                        core.navigatePage(element, -1);
+                    });
+                var displayPage = $('<div class="page-number"/>').append($('<span/>').html(element.pageNum + 1 + ' / ' + element.pageCount));
+                var btnPageNext = $('<button type="button" class="btn btn-primary btn-xs nav-page-next"/>')
+                    .html('&nbsp;')
+                    .click(function () {
+                        core.navigatePage(element, 1);
+                    });
+
+                var papgeNav = element.pageCount > 1 ? [btnPageBack, displayPage, btnPageNext] : [];
+
                 if (settings.navigate === "scroll") {
                     ganttNavigate = $('<div class="navigate" />')
                         .append($('<div class="nav-slider" />')
                             .append($('<div class="nav-slider-left" />')
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-page-back"/>')
-                                    .html('&nbsp;')
-                                    .click(function () {
-                                        core.navigatePage(element, -1);
-                                    }))
-                                .append($('<div class="page-number"/>')
-                                    .append($('<span/>')
-                                        .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-page-next"/>')
-                                    .html('&nbsp;')
-                                    .click(function () {
-                                        core.navigatePage(element, 1);
-                                    }))
+                                .append(papgeNav)
                                 .append($('<button type="button" class="btn btn-primary btn-xs nav-now"/>')
                                     .html('&nbsp;')
                                     .click(function () {
                                         core.navigateTo(element, 'now');
                                     }))
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-week"/>')
+                                .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-month"/>')
                                     .html('&nbsp;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
-                                            core.navigateTo(element, tools.getCellSize() * 8);
+                                            core.navigateTo(element, tools.getCellSize() * 30 * 2);
                                         } else if (settings.scale === 'days') {
                                             core.navigateTo(element, tools.getCellSize() * 30);
                                         } else if (settings.scale === 'weeks') {
@@ -881,11 +884,11 @@
                                             core.navigateTo(element, tools.getCellSize() * 6);
                                         }
                                     }))
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-day"/>')
+                                .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-week"/>')
                                     .html('&nbsp;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
-                                            core.navigateTo(element, tools.getCellSize() * 4);
+                                            core.navigateTo(element, tools.getCellSize() * 7 * 2);
                                         } else if (settings.scale === 'days') {
                                             core.navigateTo(element, tools.getCellSize() * 7);
                                         } else if (settings.scale === 'weeks') {
@@ -911,11 +914,11 @@
                                 )
                             )
                             .append($('<div class="nav-slider-right" />')
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-next-day"/>')
+                                .append($('<button type="button" class="btn btn-primary btn-xs nav-next-week"/>')
                                     .html('&nbsp;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
-                                            core.navigateTo(element, tools.getCellSize() * -4);
+                                            core.navigateTo(element, tools.getCellSize() * -7 * 2);
                                         } else if (settings.scale === 'days') {
                                             core.navigateTo(element, tools.getCellSize() * -7);
                                         } else if (settings.scale === 'weeks') {
@@ -924,11 +927,11 @@
                                             core.navigateTo(element, tools.getCellSize() * -3);
                                         }
                                     }))
-                                .append($('<button type="button" class="btn btn-primary btn-xs nav-next-week"/>')
+                                .append($('<button type="button" class="btn btn-primary btn-xs nav-next-month"/>')
                                     .html('&nbsp;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
-                                            core.navigateTo(element, tools.getCellSize() * -8);
+                                            core.navigateTo(element, tools.getCellSize() * -30 * 2);
                                         } else if (settings.scale === 'days') {
                                             core.navigateTo(element, tools.getCellSize() * -30);
                                         } else if (settings.scale === 'weeks') {
@@ -954,49 +957,43 @@
                     });
                     // Button navigation is provided by setting `settings.navigation='buttons'`
                 } else {
+
+                    var multiplier = 1;
+                    if (settings.scale == "hours") {
+                        multiplier = 2;
+                    }
+
                     ganttNavigate = $('<div class="navigate" />')
-                        .append($('<button type="button" class="btn btn-primary btn-xs nav-page-back"/>')
-                            .html('&nbsp;')
-                            .click(function () {
-                                core.navigatePage(element, -1);
-                            }))
-                        .append($('<div class="page-number"/>')
-                            .append($('<span/>')
-                                .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                        .append($('<button type="button" class="btn btn-primary btn-xs nav-page-next"/>')
-                            .html('&nbsp;')
-                            .click(function () {
-                                core.navigatePage(element, 1);
-                            }))
+                        .append(papgeNav)
                         .append($('<button type="button" class="btn btn-primary btn-xs nav-begin"/>')
                             .html('&nbsp;')
                             .click(function () {
                                 core.navigateTo(element, 'begin');
                             }))
+                        .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-month"/>')
+                            .html('&nbsp;')
+                            .mousedown(function () {
+                                core.navigateTo(element, tools.getCellSize() * 30 * multiplier);
+                            }))
                         .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-week"/>')
                             .html('&nbsp;')
                             .mousedown(function () {
-                                core.navigateTo(element, tools.getCellSize() * 7);
-                            }))
-                        .append($('<button type="button" class="btn btn-primary btn-xs nav-prev-day"/>')
-                            .html('&nbsp;')
-                            .mousedown(function () {
-                                core.navigateTo(element, tools.getCellSize());
+                                core.navigateTo(element, tools.getCellSize() * 7 * multiplier);
                             }))
                         .append($('<button type="button" class="btn btn-primary btn-xs nav-now"/>')
                             .html('&nbsp;')
                             .click(function () {
                                 core.navigateTo(element, 'now');
                             }))
-                        .append($('<button type="button" class="btn btn-primary btn-xs nav-next-day"/>')
-                            .html('&nbsp;')
-                            .click(function () {
-                                core.navigateTo(element, tools.getCellSize() * -1);
-                            }))
                         .append($('<button type="button" class="btn btn-primary btn-xs nav-next-week"/>')
                             .html('&nbsp;')
                             .click(function () {
-                                core.navigateTo(element, tools.getCellSize() * -7);
+                                core.navigateTo(element, tools.getCellSize() * -7 * multiplier);
+                            }))
+                        .append($('<button type="button" class="btn btn-primary btn-xs nav-next-month"/>')
+                            .html('&nbsp;')
+                            .click(function () {
+                                core.navigateTo(element, tools.getCellSize() * -30 * multiplier);
                             }))
                         .append($('<button type="button" class="btn btn-primary btn-xs nav-end"/>')
                             .html('&nbsp;')
@@ -1073,7 +1070,7 @@
                             var top;
 
                             _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
-                            
+
                             switch (settings.scale) {
                                 // **Hourly data**
                                 case "hours":
