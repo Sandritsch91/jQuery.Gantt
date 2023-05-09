@@ -23,6 +23,9 @@
     "require": {
 
     },
+    "require-dev": {
+        "bower-asset/jquery": "*"
+    },
     "repositories": [
 		{
 			"type": "composer",

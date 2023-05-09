@@ -192,6 +192,9 @@
             scrollToToday: true,
             shiftKeyToScroll: true,
             scrollDistance: -50,
+            // scroll header
+            enableScrollHeader: true,
+            scrollParent: 'section.body',
             // storage options
             useStorage: false,
             storageKey: "jquery.fn.gantt",
@@ -370,6 +373,10 @@
                 element.gantt = $('<div class="fn-gantt" />').append(content);
 
                 $(element).empty().append(element.gantt);
+
+                if (settings.enableScrollHeader) {
+                    core.scrollHeader(element);
+                }
 
                 element.scrollNavigation.panelMargin = parseInt($dataPanel.css("left").replace("px", ""), 10);
                 element.scrollNavigation.panelMaxPos = ($dataPanel.width() - $rightPanel.width());
@@ -839,6 +846,27 @@
                 }
 
                 return $('<div class="rightPanel"></div>').append(dataPanel);
+            },
+
+            // **ScrollHeader**
+            scrollHeader: function (element) {
+                $(".row.header").wrapAll("<div class='header fixed'></div>");
+
+                let height_headers = $(settings.scrollParent).offset().top;
+                let initialOffset = $(".header.fixed").offset().top - height_headers; // minus height of headers
+                $(settings.scrollParent).on('scroll', function (e) {
+                    let top = $(e.currentTarget).scrollTop();
+                    let elem = $(".header.fixed");
+                    if (top > initialOffset) {
+                        elem.css({
+                            'top': top - initialOffset,
+                        });
+                    } else {
+                        elem.css({
+                            'top': '',
+                        });
+                    }
+                });
             },
 
             // **Navigation**

@@ -120,6 +120,11 @@
     width: 100%;
 }
 
+.fn-gantt .header.fixed {
+    position: absolute;
+    z-index: 11;
+}
+
 .fn-gantt .day, .fn-gantt .date {
     overflow: visible;
     width: 24px;
