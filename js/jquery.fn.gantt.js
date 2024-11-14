@@ -247,6 +247,9 @@
 
         // Core object is responsible for navigation and rendering
         var core = {
+            // Set to true if events are initialized
+            eventsInitialized: false,
+
             // Return the element whose topmost point lies under the given point
             // Normalizes for old browsers (NOTE: doesn't work when element is outside viewport)
             //TODO: https://github.com/taitems/jQuery.Gantt/issues/137
@@ -297,7 +300,10 @@
 
                 /* core.render(element); */
                 core.waitToggle(element, function () {
-                    core.initEvents(element);
+                    if (!core.eventsInitialized) {
+                        core.initEvents(element);
+                        core.eventsInitialized = true;
+                    }
                     core.render(element);
                 });
             },
